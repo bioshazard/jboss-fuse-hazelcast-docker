@@ -1,10 +1,12 @@
-# Use latest jboss/base-jdk:7 image as the base
-FROM jboss/base-jdk:7
+# Use latest jboss/base-jdk:8 image as the base
+FROM jboss/base-jdk:8
 
-MAINTAINER Hiram Chirino <hchirino@redhat.com>
+LABEL maintainer="Subhrodip Mohanta <hello@subho.xyz>"
 
 # Set the FUSE_VERSION env variable
-ENV FUSE_VERSION 6.2.0.redhat-059
+ENV FUSE_VERSION 7.8.0.fuse-780029
+
+LABEL fuse.version=${FUSE_VERSION}
 
 # If the container is launched with re-mapped ports, these ENV vars should
 # be set to the remapped values.
@@ -33,4 +35,5 @@ VOLUME /opt/jboss/jboss-fuse/deploy
 
 # lets default to the jboss-fuse dir so folks can more easily navigate to around the server install
 WORKDIR /opt/jboss/jboss-fuse
+
 CMD /opt/jboss/jboss-fuse/bin/fuse server

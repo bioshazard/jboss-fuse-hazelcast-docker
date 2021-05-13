@@ -5,8 +5,8 @@
 #
 
 # Adjust the following env vars if needed.
-FUSE_ARTIFACT_ID=jboss-fuse-karaf-full
-FUSE_DISTRO_URL=http://origin-repository.jboss.org/nexus/content/groups/ea/org/jboss/fuse/${FUSE_ARTIFACT_ID}/${FUSE_VERSION}/${FUSE_ARTIFACT_ID}-${FUSE_VERSION}.zip
+FUSE_ARTIFACT_ID=fuse-karaf
+FUSE_DISTRO_URL=https://origin-repository.jboss.org/nexus/content/groups/ea/org/jboss/fuse/${FUSE_ARTIFACT_ID}/${FUSE_VERSION}/${FUSE_ARTIFACT_ID}-${FUSE_VERSION}.zip
 
 # Lets fail fast if any command in this script does succeed.
 set -e
@@ -18,15 +18,25 @@ cd /opt/jboss
 
 # Download and extract the distro
 curl -O ${FUSE_DISTRO_URL}
+echo 'Extracting the zip'
 jar -xvf ${FUSE_ARTIFACT_ID}-${FUSE_VERSION}.zip
+echo 'Removing the zip'
 rm ${FUSE_ARTIFACT_ID}-${FUSE_VERSION}.zip
-mv jboss-fuse-${FUSE_VERSION} jboss-fuse
+echo 'Renaming the zip to jboss-fuse'
+mv ${FUSE_ARTIFACT_ID}-${FUSE_VERSION} jboss-fuse
+echo 'Making the binary files executable in nature'
 chmod a+x jboss-fuse/bin/*
-rm jboss-fuse/bin/*.bat jboss-fuse/bin/start jboss-fuse/bin/stop jboss-fuse/bin/status jboss-fuse/bin/patch
+echo 'Removing unwanted files'
+rm -rf jboss-fuse/bin/*.bat 
+rm -rf jboss-fuse/bin/start 
+rm -rf jboss-fuse/bin/stop
+rm -rf jboss-fuse/bin/status
 
+### Not present in Fuse 7.8 ###
 # Lets remove some bits of the distro which just add extra weight in a docker image.
-rm -rf jboss-fuse/extras
-rm -rf jboss-fuse/quickstarts
+#rm -rf jboss-fuse/extras
+#rm -rf jboss-fuse/quickstarts
+#rm -rf jboss-fuse/bin/patch 
 
 #
 # Let the karaf container name/id come from setting the FUSE_KARAF_NAME && FUSE_RUNTIME_ID env vars
@@ -55,7 +65,7 @@ org.osgi.framework.storage=${karaf.base}/tmp/cache
 sed -i -e 's/-Djava.io.tmpdir="$KARAF_DATA\/tmp"/-Djava.io.tmpdir="$KARAF_BASE\/tmp"/' jboss-fuse/bin/karaf
 sed -i -e 's/-Djava.io.tmpdir="$KARAF_DATA\/tmp"/-Djava.io.tmpdir="$KARAF_BASE\/tmp"/' jboss-fuse/bin/fuse
 sed -i -e 's/-Djava.io.tmpdir="$KARAF_DATA\/tmp"/-Djava.io.tmpdir="$KARAF_BASE\/tmp"/' jboss-fuse/bin/client
-sed -i -e 's/-Djava.io.tmpdir="$KARAF_DATA\/tmp"/-Djava.io.tmpdir="$KARAF_BASE\/tmp"/' jboss-fuse/bin/admin
+#sed -i -e 's/-Djava.io.tmpdir="$KARAF_DATA\/tmp"/-Djava.io.tmpdir="$KARAF_BASE\/tmp"/' jboss-fuse/bin/admin
 sed -i -e 's/${karaf.data}\/generated-bundles/${karaf.base}\/tmp\/generated-bundles/' jboss-fuse/etc/org.apache.felix.fileinstall-deploy.cfg
 
 # lets remove the karaf.delay.console=true to disable the progress bar

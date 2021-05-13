@@ -6,7 +6,7 @@ This project builds a Docker image for [JBoss Fuse](http://www.jboss.org/product
 
 You can then run a Fuse server with the following command:
 
-    docker run -it jboss/jboss-fuse-full bin/fuse
+    docker run -it subhrodip/jboss-fuse-docker bin/fuse
 
 Note that the web console will not be accessible since we have not yet defined users that can log into it
 and have not exposed the web console port on the docker host.
@@ -23,17 +23,17 @@ First, create a `users.properties` file that contains your users, passwords, and
 
 Then create a Dockerfile with the following content:
 
-    FROM jboss/jboss-fuse-full
+    FROM subhrodip/jboss-fuse-docker
     COPY users.properties /opt/jboss/jboss-fuse/etc/
     
 
 Then you can build a new Docker image using the following commnad:
 
-    docker build --tag=jboss/jboss-fuse-full-admin .
+    docker build --tag=subhrodip/jboss-fuse-full-admin .
 
 Run your new image:
 
-    docker run -it -p 8181:8181 jboss/jboss-fuse-full-admin
+    docker run -it -p 8181:8181 subhrodip/jboss-fuse-full-admin
 
 The administration console should be available at [http://localhost:8181/hawtio](http://localhost:8181/hawtio)
 
@@ -62,7 +62,7 @@ If you add the ``-p 8101:8101` to your `docker run` command, then you should be 
 
 ## Image internals
 
-This image extends the [`jboss/base-jdk:7`](https://github.com/JBoss-Dockerfiles/base-jdk/tree/jdk7) image which adds the OpenJDK distribution on top of the [`jboss/base`](https://github.com/JBoss-Dockerfiles/base) image. Please refer to the README.md for selected images for more info.
+This image extends the [`jboss/base-jdk:8`](https://github.com/JBoss-Dockerfiles/base-jdk/tree/jdk8) image which adds the OpenJDK distribution on top of the [`jboss/base`](https://github.com/JBoss-Dockerfiles/base) image. Please refer to the README.md for selected images for more info.
 
 The server is run as the `jboss` user which has the uid/gid set to `1000`.
 
@@ -70,8 +70,8 @@ Fuse is installed in the `/opt/jboss/jboss-fuse` directory.
 
 ## Source
 
-The source is [available on GitHub](https://github.com/jboss-fuse/jboss-fuse-docker).
+The source is [available on GitHub](https://github.com/ohbus/jboss-fuse-docker).
 
 ## Issues
 
-Please report any issues or file RFEs on [GitHub](https://github.com/jboss-fuse/jboss-fuse-docker/issues).
+Please report any issues or file RFEs on [GitHub](https://github.com/ohbus/jboss-fuse-docker/issues).
