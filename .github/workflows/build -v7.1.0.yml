@@ -60,11 +60,11 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6,linux/ppc64le,darwin/amd64
             push: true
             tags: |
-              subhrodip/jboss-fuse:710018
-              subhrodip/jboss-fuse:fuse-710018
-              subhrodip/jboss-fuse:7.1.0.fuse-710018
+              subhrodip/jboss-fuse:710029
+              subhrodip/jboss-fuse:fuse-710029
+              subhrodip/jboss-fuse:7.1.0.fuse-710029
               subhrodip/jboss-fuse:7.1.0
-              ghcr.io/ohbus/jboss-fuse:710018
-              ghcr.io/ohbus/jboss-fuse:fuse-710018
-              ghcr.io/ohbus/jboss-fuse:7.1.0.fuse-710018
+              ghcr.io/ohbus/jboss-fuse:710029
+              ghcr.io/ohbus/jboss-fuse:fuse-710029
+              ghcr.io/ohbus/jboss-fuse:7.1.0.fuse-710029
               ghcr.io/ohbus/jboss-fuse:7.1.0
