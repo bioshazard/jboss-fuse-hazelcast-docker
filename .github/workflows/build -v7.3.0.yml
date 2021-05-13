@@ -21,11 +21,11 @@
 # THE SOFTWARE.
 #
 
-name: CI v7.8.0
+name: CI v7.3.0
 
 on:
   push:
-    branches: v7.8.0
+    branches: v7.3.0.fuse-730065-redhat-00002
 
 jobs:
   docker:
@@ -60,11 +60,11 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6,linux/ppc64le,darwin/amd64
             push: true
             tags: |
-              subhrodip/jboss-fuse:780029
-              subhrodip/jboss-fuse:fuse-780029
-              subhrodip/jboss-fuse:7.8.0.fuse-780029
-              subhrodip/jboss-fuse:7.8.0
-              ghcr.io/ohbus/jboss-fuse:780029
-              ghcr.io/ohbus/jboss-fuse:fuse-780029
-              ghcr.io/ohbus/jboss-fuse:7.8.0.fuse-780029
-              ghcr.io/ohbus/jboss-fuse:7.8.0
+              subhrodip/jboss-fuse:730065-redhat-00002
+              subhrodip/jboss-fuse:fuse-730065-redhat-00002
+              subhrodip/jboss-fuse:7.3.0.fuse-730065-redhat-00002
+              subhrodip/jboss-fuse:7.3.0
+              ghcr.io/ohbus/jboss-fuse:730065-redhat-00002
+              ghcr.io/ohbus/jboss-fuse:fuse-730065-redhat-00002
+              ghcr.io/ohbus/jboss-fuse:7.3.0.fuse-730065-redhat-00002
+              ghcr.io/ohbus/jboss-fuse:7.3.0
