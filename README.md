@@ -3,13 +3,19 @@
 This project builds a Docker image for [JBoss Fuse](https://developers.redhat.com/products/fuse/overview).
 
 
+### Container Registries for finding this image
+
+- [**DockerHub**](https://hub.docker.com/r/subhrodip/jboss-fuse) 🐬 `docker pull docker.io/subhrodip/jboss-fuse`
+- [**GitHub Container Registry**](https://ghcr.io/ohbus/jboss-fuse) :octocat: `docker pull ghcr.io/ohbus/jboss-fuse`
+
+#### Version Specific Dockerfiles can be found at their respective [branches](https://github.com/ohbus/jboss-fuse-docker/branches/all)
 
 ## Usage
 
 You can then run a Fuse server with the following command:
-
-    docker run -it subhrodip/jboss-fuse bin/fuse
-
+```sh
+docker run -it subhrodip/jboss-fuse bin/fuse
+```
 Note that the web console will not be accessible since we have not yet defined users that can log into it
 and have not exposed the web console port on the docker host.
 
@@ -19,26 +25,24 @@ and have not exposed the web console port on the docker host.
 
 
 
-First, create a `users.properties` file that contains your users, passwords, and roles.  For example:
-
-    admin=password,Operator, Maintainer, Deployer, Auditor, Administrator, SuperUser
-    dev=password,Operator, Maintainer, Deployer
-
-
+First, create a **`users.properties`** file that contains your users, passwords, and roles.  For example:
+```sh
+admin=password,Operator, Maintainer, Deployer, Auditor, Administrator, SuperUser
+dev=password,Operator, Maintainer, Deployer
+```
 Then create a Dockerfile with the following content:
-
-    FROM subhrodip/jboss-fuse
-    COPY users.properties /opt/jboss/jboss-fuse/etc/
-    
-
+```sh
+FROM subhrodip/jboss-fuse
+COPY users.properties /opt/jboss/jboss-fuse/etc/
+```
 Then you can build a new Docker image using the following commnad:
-
-    docker build --tag=subhrodip/jboss-fuse-custom .
-
+```sh
+docker build --tag=subhrodip/jboss-fuse-custom .
+```
 Run your new image:
-
-    docker run -it -p 8181:8181 subhrodip/jboss-fuse-custom
-
+```sh
+docker run -it -p 8181:8181 subhrodip/jboss-fuse-custom
+```
 The administration console should be available at [http://localhost:8181/hawtio](http://localhost:8181/hawtio)
 
 
