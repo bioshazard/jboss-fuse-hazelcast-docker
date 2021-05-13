@@ -25,7 +25,7 @@ name: CI v7.3.0
 
 on:
   push:
-    branches: v7.3.0.fuse-730065-redhat-00002
+    branches: v7.3.0
 
 jobs:
   docker:
