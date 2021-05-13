@@ -5,7 +5,7 @@ LABEL maintainer="Subhrodip Mohanta <hello@subho.xyz>"
 LABEL org.opencontainers.image.source="https://github.com/ohbus/jboss-fuse-docker"
 
 # Set the FUSE_VERSION env variable
-ENV FUSE_VERSION 7.0.0.fuse-000172
+ENV FUSE_VERSION 7.0.0.fuse-000181
 
 LABEL fuse.version=${FUSE_VERSION}
 
