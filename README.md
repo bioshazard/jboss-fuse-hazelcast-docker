@@ -1,4 +1,4 @@
-# FUSE Docker image
+# FUSE Docker images
 
 This project builds a Docker image for [JBoss Fuse](https://developers.redhat.com/products/fuse/overview).
 
@@ -33,11 +33,11 @@ Then create a Dockerfile with the following content:
 
 Then you can build a new Docker image using the following commnad:
 
-    docker build --tag=subhrodip/jboss-fuse-full-admin .
+    docker build --tag=subhrodip/jboss-fuse-custom .
 
 Run your new image:
 
-    docker run -it -p 8181:8181 subhrodip/jboss-fuse-full-admin
+    docker run -it -p 8181:8181 subhrodip/jboss-fuse-custom
 
 The administration console should be available at [http://localhost:8181/hawtio](http://localhost:8181/hawtio)
 
@@ -51,9 +51,9 @@ Those ports are:
 * 8181 - Web access (also hosts the Fuse admin console).
 * 8101 - SSH Karaf console access
 
-If you add the ``-p 8181:8181` to your `docker run` command, then you should be able to load [http://localhost:8181/hawtio](http://localhost:8181/hawtio) in your web browser to mange the Fuse server.
+If you add the `-p 8181:8181` to your `docker run` command, then you should be able to load [http://localhost:8181/hawtio](http://localhost:8181/hawtio) in your web browser to mange the Fuse server.
 
-If you add the ``-p 8101:8101` to your `docker run` command, then you should be able to ssh into the Karaf container using a command similar to: `ssh admin@localhost -p 8101`
+If you add the `-p 8101:8101` to your `docker run` command, then you should be able to ssh into the Karaf container using a command similar to: `ssh admin@localhost -p 8101`
 
 
 
@@ -68,6 +68,16 @@ If you add the ``-p 8101:8101` to your `docker run` command, then you should be 
 * 8883  - AMQ MQTT over SSL port.
 * 5671  - AMQ AMQP over SSL port.
 * 61614 - AMQ STOMP over SSL port.
+
+### Respective Enviornemt Variables for changing the port (after configuration change)
+- `FUSE_PUBLIC_OPENWIRE_PORT` 61616
+- `FUSE_PUBLIC_MQTT_PORT` 1883
+- `FUSE_PUBLIC_AMQP_PORT` 5672
+- `FUSE_PUBLIC_STOMP_PORT` 61613
+- `FUSE_PUBLIC_OPENWIRE_SSL_PORT` 61617
+- `FUSE_PUBLIC_MQTT_SSL_PORT` 8883
+- `FUSE_PUBLIC_AMQP_SSL_PORT` 5671
+- `FUSE_PUBLIC_STOMP_SSL_PORT` 61614
 
 
 
