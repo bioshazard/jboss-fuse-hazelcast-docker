@@ -21,11 +21,11 @@
 # THE SOFTWARE.
 #
 
-name: CI v7.0.0
+name: CI v7.1.0
 
 on:
   push:
-    branches: v7.0.0
+    branches: v7.1.0
 
 jobs:
   docker:
@@ -60,11 +60,11 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6,linux/ppc64le,darwin/amd64
             push: true
             tags: |
-              subhrodip/jboss-fuse:000181
-              subhrodip/jboss-fuse:fuse-000181
-              subhrodip/jboss-fuse:7.0.0.fuse-000181
-              subhrodip/jboss-fuse:7.0.0
-              ghcr.io/ohbus/jboss-fuse:000181
-              ghcr.io/ohbus/jboss-fuse:fuse-000181
-              ghcr.io/ohbus/jboss-fuse:7.0.0.fuse-000181
-              ghcr.io/ohbus/jboss-fuse:7.0.0
+              subhrodip/jboss-fuse:710018
+              subhrodip/jboss-fuse:fuse-710018
+              subhrodip/jboss-fuse:7.1.0.fuse-710018
+              subhrodip/jboss-fuse:7.1.0
+              ghcr.io/ohbus/jboss-fuse:710018
+              ghcr.io/ohbus/jboss-fuse:fuse-710018
+              ghcr.io/ohbus/jboss-fuse:7.1.0.fuse-710018
+              ghcr.io/ohbus/jboss-fuse:7.1.0
