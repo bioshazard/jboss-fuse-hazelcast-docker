@@ -1,4 +1,4 @@
-# FUSE Docker images
+# FUSE Docker Images [![Docker pulls](https://img.shields.io/docker/pulls/subhrodip/jboss-fuse)](https://hub.docker.com/r/subhrodip/jboss-fuse)
 
 This project builds a Docker image for [JBoss Fuse](https://developers.redhat.com/products/fuse/overview).
 
