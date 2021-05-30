@@ -5,7 +5,7 @@ This project builds a Docker image for [JBoss Fuse](https://developers.redhat.co
 
 ### Container Registries for finding this image
 
-- [**DockerHub**](https://hub.docker.com/r/subhrodip/jboss-fuse) 🐬 `docker pull docker.io/subhrodip/jboss-fuse`
+- [**DockerHub**](https://hub.docker.com/r/subhrodip/jboss-fuse) 🐬 `docker pull subhrodip/jboss-fuse`
 - [**GitHub Container Registry**](https://ghcr.io/ohbus/jboss-fuse) :octocat: `docker pull ghcr.io/ohbus/jboss-fuse`
 
 #### Version Specific Dockerfiles can be found at their respective [branches](https://github.com/ohbus/jboss-fuse-docker/branches/all)
