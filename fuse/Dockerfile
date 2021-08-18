@@ -5,7 +5,9 @@ LABEL maintainer="Subhrodip Mohanta <hello@subho.xyz>"
 LABEL org.opencontainers.image.source="https://github.com/ohbus/jboss-fuse-docker"
 
 # Set the FUSE_VERSION env variable
-ENV FUSE_VERSION 7.9.0.fuse-790055
+# ENV FUSE_VERSION 7.9.0.fuse-790055
+# (this is the latest at https://origin-repository.jboss.org/nexus/content/groups/ea/org/jboss/fuse/fuse-karaf/)
+ENV FUSE_VERSION 7.8.0.fuse-780029
 
 LABEL fuse.version=${FUSE_VERSION}
 
@@ -38,3 +40,6 @@ VOLUME /opt/jboss/jboss-fuse/deploy
 WORKDIR /opt/jboss/jboss-fuse
 
 CMD /opt/jboss/jboss-fuse/bin/fuse server
+
+# Add example admin user 'admin1' with password 'admin12'
+RUN echo "admin1=admin12,admin" > /opt/jboss/jboss-fuse/etc/users.properties
